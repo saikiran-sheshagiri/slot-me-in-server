@@ -1,0 +1,11 @@
+{
+  "name": "slot-me-in-server",
+  "version": "1.0.0",
+  "description": "Server for the slot me in app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Saikiran Sheshagiri",
+  "license": "ISC"
+}
