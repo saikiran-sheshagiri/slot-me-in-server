@@ -2,10 +2,29 @@
   "name": "slot-me-in-server",
   "version": "1.0.0",
   "description": "Server for the slot me in app",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "debug": "node --nolazy --debug=5858 build/server.js",
+    "build": "babel src --out-dir build",
+    "babel-node": "babel-node --presets=env",
+    "build-watch": "babel src --watch --out-dir build",
+    "dev": "concurrently \"npm run build-watch\" \"npm run serve-dev\"",
+	"serve": "node build/server.js",
+	"serve-dev": "nodemon build/server.js",
+    "start": "concurrently \"npm run build\" \"npm run serve\""
   },
   "author": "Saikiran Sheshagiri",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "concurrently": "^3.5.0",
+    "cors": "^2.8.3",
+    "express": "^4.15.2",
+    "mongoose": "^4.9.8"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-env": "^1.4.0",
+    "nodemon": "^1.12.1"
+  }
 }
