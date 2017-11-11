@@ -17,7 +17,8 @@ var slotSchema = exports.slotSchema = new _mongoose2.default.Schema({
 				participant: {
 								type: _user.userSchema,
 								default: null
-				}
+				},
+				notes: String
 }, {
 				timestamps: true
 });

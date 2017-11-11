@@ -36,7 +36,6 @@ var ActivityController = function () {
    * @param {*} response 
    */
 		value: function save(request, response) {
-			console.log(request.params.eventId);
 			_event.Event.findById(request.params.eventId, function (error, event) {
 				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
 					console.log(event);
@@ -50,7 +49,8 @@ var ActivityController = function () {
 
 					for (var index = 0; index < request.body.numberOfSlots; index++) {
 						var slot = new _slot.Slot({
-							participant: null
+							participant: null,
+							notes: ''
 						});
 
 						activity.slots.push(slot);

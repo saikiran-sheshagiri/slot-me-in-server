@@ -16,7 +16,6 @@ class ActivityController {
 	 * @param {*} response 
 	 */
 	save(request, response) {
-		console.log(request.params.eventId);
 		Event.findById(request.params.eventId, 
 				(error, event) => { 
 					if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);
@@ -32,7 +31,8 @@ class ActivityController {
 				
 						for(let index = 0; index < request.body.numberOfSlots; index++) {
 							let slot = new Slot({
-								participant: null
+								participant: null,
+								notes: ''
 							});
 				
 							activity.slots.push(slot);

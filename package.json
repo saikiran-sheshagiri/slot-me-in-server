@@ -9,6 +9,7 @@
     "build-watch": "babel src --watch --out-dir build",
     "dev": "concurrently \"npm run build-watch\" \"npm run serve-dev\"",
 	"serve": "node build/server.js",
+	"serve-es6": "node src/server.js",
 	"serve-dev": "nodemon build/server.js",
     "start": "concurrently \"npm run build\" \"npm run serve\""
   },
