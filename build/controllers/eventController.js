@@ -23,22 +23,17 @@ var EventController = function () {
 
 		/**
    * Save a new Event
-   *	@param  {
-  				"eventName": "",
-  				"organizerName": "",
-  				"organizerEmail": "",
-  				"organizerPhone": ""
-  			} request 
+   *	@param  {"name":"Birthday celebrations of Mike","organizer":{"name":"John Doe","email":"joh.doe@gmail.com","phone":"1234123421"}} request 
   * 	@param {*} response
   */
 		value: function save(request, response) {
 			var organizer = new _user.User({
-				name: request.body.organizerName,
-				email: request.body.organizerEmail,
-				phone: request.body.organizerPhone
+				name: request.body.organizer.name,
+				email: request.body.organizer.email,
+				phone: request.body.organizer.phone
 			});
 			var event = new _event.Event({
-				name: request.body.eventName,
+				name: request.body.name,
 				organizer: organizer,
 				activities: []
 			});

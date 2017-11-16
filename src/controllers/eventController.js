@@ -5,22 +5,17 @@ class EventController {
 
 	/**
 	 * Save a new Event
-	 *	@param  {
-					"eventName": "",
-					"organizerName": "",
-					"organizerEmail": "",
-					"organizerPhone": ""
-				} request 
+	 *	@param  {"name":"Birthday celebrations of Mike","organizer":{"name":"John Doe","email":"joh.doe@gmail.com","phone":"1234123421"}} request 
 	* 	@param {*} response
 	*/
 	save(request, response) {
 		let organizer = new User({
-			name: request.body.organizerName,
-			email: request.body.organizerEmail,
-			phone: request.body.organizerPhone
+			name: request.body.organizer.name,
+			email: request.body.organizer.email,
+			phone: request.body.organizer.phone
 		});
 		let event = new Event({
-			name: request.body.eventName,
+			name: request.body.name,
 			organizer: organizer,
 			activities: []
 		});
