@@ -22,9 +22,9 @@ class ActivityController {
 					else {
 						console.log(event);
 						let activity = new Activity({
-							name: request.body.activityName,
-							activityDate: request.body.activityDateTime,
-							duration: request.body.activityDuration,
+							name: request.body.name,
+							activityDate: request.body.activityDate,
+							duration: request.body.duration,
 							numberOfSlots: request.body.numberOfSlots,
 							slots: []
 						});

@@ -40,9 +40,9 @@ var ActivityController = function () {
 				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
 					console.log(event);
 					var activity = new _activity.Activity({
-						name: request.body.activityName,
-						activityDate: request.body.activityDateTime,
-						duration: request.body.activityDuration,
+						name: request.body.name,
+						activityDate: request.body.activityDate,
+						duration: request.body.duration,
 						numberOfSlots: request.body.numberOfSlots,
 						slots: []
 					});
