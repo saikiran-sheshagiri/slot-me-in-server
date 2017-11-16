@@ -5,6 +5,35 @@ import { Event } from '../models/event';
 
 class ActivityController {
 
+
+	/**
+	 * 
+	 */
+	getAll(request, response) {
+		Event.findById(request.params.eventId, 
+			(error, event) => { 
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);
+				else {
+					response.json(event.activities);
+				}
+			});
+	}
+
+	deleteActivity(activityId, request, response) {
+		Event.findById(request.params.eventId, 
+			(error, event) => { 
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);
+				else {
+					event.activities.pull(activityId);
+
+					event.save((error, event) => {
+						if (error) response.send('unable to delete activity');
+						else response.json(event);
+					})
+				}
+			});
+	}
+
 	/**
 	 * 
 	 * @param request {

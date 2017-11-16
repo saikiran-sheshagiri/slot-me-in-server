@@ -22,8 +22,32 @@ var ActivityController = function () {
 	}
 
 	_createClass(ActivityController, [{
-		key: 'save',
+		key: 'getAll',
 
+
+		/**
+   * 
+   */
+		value: function getAll(request, response) {
+			_event.Event.findById(request.params.eventId, function (error, event) {
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
+					response.json(event.activities);
+				}
+			});
+		}
+	}, {
+		key: 'deleteActivity',
+		value: function deleteActivity(activityId, request, response) {
+			_event.Event.findById(request.params.eventId, function (error, event) {
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
+					event.activities.pull(activityId);
+
+					event.save(function (error, event) {
+						if (error) response.send('unable to delete activity');else response.json(event);
+					});
+				}
+			});
+		}
 
 		/**
    * 
@@ -35,6 +59,9 @@ var ActivityController = function () {
    * 		}  
    * @param {*} response 
    */
+
+	}, {
+		key: 'save',
 		value: function save(request, response) {
 			_event.Event.findById(request.params.eventId, function (error, event) {
 				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
