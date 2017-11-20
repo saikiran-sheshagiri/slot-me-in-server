@@ -8,4 +8,9 @@ router.route('/')
 			eventController.save(request, response);
 		});
 
+router.route('/:eventId')
+		.get((request, response, next) => {
+			eventController.get(request.params.eventId, request, response);
+		})
+
 export default router;

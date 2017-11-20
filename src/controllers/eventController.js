@@ -27,6 +27,17 @@ class EventController {
 		console.log('Saving the event');
 		console.log(event);
 	}
+
+	get(eventId, request, response) {
+		Event.findById(eventId, 
+			(error, event) => { 
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);
+				else {
+					response.json(event);
+				}
+			}
+		);
+	}
 }
 
 export default new EventController();

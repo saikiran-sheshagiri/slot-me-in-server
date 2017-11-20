@@ -45,14 +45,15 @@ var SlotController = function () {
 						});
 
 						if (typeof slot === 'undefined') response.send('Unable to find the slot with slot id: ' + request.params.slotId);else {
+							//TODO: validation of the input form variables
 							var oParticipant = new _user.User({
-								name: request.body.participantName,
-								email: request.body.participantEmail,
-								phone: request.body.participantPhone
+								name: request.body.participant.name,
+								email: request.body.participant.email,
+								phone: request.body.participant.phone
 							});
 
 							slot.participant = oParticipant;
-							slot.notes = request.body.participantNotes;
+							slot.notes = request.body.notes;
 
 							event.save(function (error, event) {
 								if (error) {

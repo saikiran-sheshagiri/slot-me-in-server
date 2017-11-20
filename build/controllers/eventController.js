@@ -44,6 +44,15 @@ var EventController = function () {
 			console.log('Saving the event');
 			console.log(event);
 		}
+	}, {
+		key: 'get',
+		value: function get(eventId, request, response) {
+			_event.Event.findById(eventId, function (error, event) {
+				if (error) response.send('Unable to find event with id: ' + request.params.eventId + '. ' + error);else {
+					response.json(event);
+				}
+			});
+		}
 	}]);
 
 	return EventController;

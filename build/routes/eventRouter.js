@@ -20,4 +20,8 @@ router.route('/').post(function (request, response, next) {
 	_eventController2.default.save(request, response);
 });
 
+router.route('/:eventId').get(function (request, response, next) {
+	_eventController2.default.get(request.params.eventId, request, response);
+});
+
 exports.default = router;
